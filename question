@@ -1,0 +1,94 @@
+class Vehicle {
+  String brand;
+  String model;
+  int year;
+
+  Vehicle(this.brand, this.model, this.year);
+
+  void drive() {
+    print('The ${this.brand} ${this.model} (${this.year}) is being driven.');
+  }
+}
+
+class Car extends Vehicle {
+  int numDoors;
+
+  Car(String brand, String model, int year, this.numDoors) : super(brand, model, year);
+
+  @override
+  void drive() {
+    print('The ${this.brand} ${this.model} (${this.year}) with ${this.numDoors} doors is being driven.');
+  }
+}
+void main() {
+  Vehicle myVehicle = Vehicle('Toyota', 'Corolla', 2022);
+  myVehicle.drive(); // prints "The Toyota Corolla (2022) is being driven."
+
+  Car myCar = Car('Honda', 'Civic', 2021, 4);
+  myCar.drive(); // prints "The Honda Civic (2021) with 4 doors is being driven."
+}
+
+
+
+class BankAccount {
+  int balance;
+  String accountNumber;
+
+  BankAccount(this.balance, this.accountNumber);
+
+  void deposit(int amount) {
+    balance += amount;
+  }
+
+  void withdraw(int amount) {
+    balance -= amount;
+  }
+}
+
+
+class CheckingAccount extends BankAccount {
+  int transactionLimit;
+
+  CheckingAccount(int balance, String accountNumber, this.transactionLimit) : super(balance, accountNumber);
+
+  @override
+  void withdraw(int amount) {
+    if (amount <= transactionLimit) {
+      balance -= amount;
+    } else {
+      print('Withdrawal amount exceeds transaction limit.');
+    }
+  }
+}
+
+
+
+
+
+
+class Person {
+  String firstName;
+  String lastName;
+
+  Person(this.firstName, this.lastName);
+
+  String fullName() {
+    return '$firstName $lastName';
+  }
+}
+
+class Student extends Person {
+  String major;
+
+  Student(String firstName, String lastName, this.major)
+      : super(firstName, lastName);
+
+  @override
+  String fullName() {
+    return '$firstName $lastName ($major)';
+  }
+}
+
+
+
+
